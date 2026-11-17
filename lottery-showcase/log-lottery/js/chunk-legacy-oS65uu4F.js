@@ -1,0 +1,1 @@
+System.register(["./chunk-legacy-DBc77XFG.js","./chunk-legacy-DEHMgdpD.js"],function(e,t){"use strict";var n,r,u,c;return{setters:[function(e){n=e.a},function(e){r=e.Q,u=e.o,c=e.P}],execute:function(){e("default",n({},[["render",function(e,t){var n=c("router-view");return u(),r(n)}]]))}}});

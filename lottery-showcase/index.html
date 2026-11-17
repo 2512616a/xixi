@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>开源抽奖</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #f6f1e8;
+      background: #12100e;
+    }
+    main { max-width: 980px; margin: 0 auto; padding: 40px 20px 72px; }
+    h1 { font-size: 36px; margin: 0 0 8px; }
+    .lead { margin: 0 0 28px; color: #cbbba6; line-height: 1.6; }
+    ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    a.card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: #1d1916;
+      border: 1px solid #3a312a;
+      border-radius: 16px;
+      padding: 18px 18px 16px;
+    }
+    a.card:hover { border-color: #e0b15a; }
+    .rank { color: #e0b15a; font-size: 13px; letter-spacing: 0.08em; }
+    h2 { margin: 4px 0 6px; font-size: 22px; }
+    p { margin: 0; color: #d9cbb8; line-height: 1.55; }
+    .go { display: inline-block; margin-top: 10px; color: #ffe08a; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>开源抽奖</h1>
+    <p class="lead">五个仍在维护、可以自己部署的抽奖项目。点进去就能用自带的示例数据抽一次。不需要注册，也没有密钥。</p>
+    <ol>
+      <li>
+        <a class="card" href="lucky-canvas/examples/showcase.html">
+          <div class="rank">01 · 大转盘 / 九宫格 / 老虎机</div>
+          <h2>lucky-canvas</h2>
+          <p>点中间的「开始抽奖」，转盘停下后显示红包结果。同页可以打开官方的九宫格和老虎机调试页。</p>
+          <span class="go">开始转盘 →</span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="moshang/index.html">
+          <div class="rank">02 · 3D 球体年会抽奖</div>
+          <h2>年会抽奖</h2>
+          <p>先点「进入抽奖」，再点「开始抽奖」。球转起来后点「结束抽奖」，中奖的人名会亮出来。名单是项目自带的示例 Excel。</p>
+          <span class="go">进入年会现场 →</span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="log-lottery/index.html">
+          <div class="rank">03 · 可配置 3D 年会抽奖</div>
+          <h2>log-lottery</h2>
+          <p>如果提示没有名单，点「使用默认数据」或 Use Default Data。然后点「进入抽奖」「开始」「抽取幸运儿」。</p>
+          <span class="go">打开 log-lottery →</span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="scavin/index.html#/admin">
+          <div class="rank">04 · 年会大屏</div>
+          <h2>年会大屏抽奖</h2>
+          <p>后台密码是页面上写的 appinn。登录后打开「批量导入」，贴入姓名和部门，点「执行导入」，再点绿色的「开始」和「停止」。</p>
+          <span class="go">打开后台 →</span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="lottery-3d/index.html">
+          <div class="rank">05 · 纯前端 3D 舞台</div>
+          <h2>lottery-3d</h2>
+          <p>打开就是示例名单。点「开始抽奖」，倒计时结束后点「停」，三等奖名单会翻出来。</p>
+          <span class="go">打开 3D 舞台 →</span>
+        </a>
+      </li>
+    </ol>
+  </main>
+</body>
+</html>

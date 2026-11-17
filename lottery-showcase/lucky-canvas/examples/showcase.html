@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lucky-canvas 抽奖演示</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #fff8ee;
+      background:
+        radial-gradient(900px 480px at 50% -10%, rgba(214, 71, 55, 0.45), transparent 60%),
+        linear-gradient(180deg, #2a1210 0%, #140b09 100%);
+    }
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 40px 20px 64px;
+      text-align: center;
+    }
+    h1 { font-size: 34px; margin: 0 0 8px; letter-spacing: 0.04em; }
+    p { margin: 0; color: #f3d7c4; }
+    .wheel-wrap { display: flex; justify-content: center; margin: 28px 0 12px; }
+    #result {
+      min-height: 32px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffe08a;
+    }
+    .links { margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .links a {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid rgba(255, 224, 138, 0.45);
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .note { margin-top: 22px; font-size: 13px; color: #c9a08f; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>lucky-canvas</h1>
+    <p>官方示例里的红包转盘配置。点击中间按钮即可抽一次。</p>
+    <div class="wheel-wrap"><div id="my-lucky"></div></div>
+    <div id="result">等待开奖</div>
+    <div class="links">
+      <a href="./wheel.html">官方调试页 · 大转盘</a>
+      <a href="./grid.html">官方调试页 · 九宫格</a>
+      <a href="./slot.html">官方调试页 · 老虎机</a>
+    </div>
+    <p class="note">奖品与配色来自仓库 packages/vue/vue3.html，用本仓库的 lucky-canvas UMD 渲染。未接入付费服务。</p>
+  </main>
+  <script src="../dist/index.umd.js"></script>
+  <script>
+    const prizes = [
+      { title: '1元红包', background: '#f9e3bb', fonts: [{ text: '1元红包', top: '18%' }] },
+      { title: '100元红包', background: '#f8d384', fonts: [{ text: '100元红包', top: '18%' }] },
+      { title: '0.5元红包', background: '#f9e3bb', fonts: [{ text: '0.5元红包', top: '18%' }] },
+      { title: '2元红包', background: '#f8d384', fonts: [{ text: '2元红包', top: '18%' }] },
+      { title: '10元红包', background: '#f9e3bb', fonts: [{ text: '10元红包', top: '18%' }] },
+      { title: '50元红包', background: '#f8d384', fonts: [{ text: '50元红包', top: '18%' }] }
+    ]
+    const result = document.getElementById('result')
+    const myLucky = new LuckyCanvas.LuckyWheel('#my-lucky', {
+      width: '340px',
+      height: '340px',
+      blocks: [{ padding: '13px', background: '#d64737' }],
+      prizes,
+      buttons: [
+        { radius: '50px', background: '#d64737' },
+        { radius: '45px', background: '#fff' },
+        { radius: '41px', background: '#f6c66f', pointer: true },
+        { radius: '35px', background: '#ffdea0', fonts: [{ text: '开始\n抽奖', fontSize: '18px', top: -18 }] }
+      ],
+      defaultStyle: { fontColor: '#d64737', fontSize: '14px' },
+      start() {
+        result.textContent = '转动中…'
+        myLucky.play()
+        const index = Math.floor(Math.random() * prizes.length)
+        setTimeout(() => myLucky.stop(index), 2600)
+      },
+      end(prize) {
+        result.textContent = '抽中：' + (prize.fonts && prize.fonts[0] ? prize.fonts[0].text : prize.title || '奖品')
+      }
+    })
+  </script>
+</body>
+</html>
