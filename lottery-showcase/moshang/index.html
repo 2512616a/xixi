@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <title>年会抽奖</title>
+    <!-- 全局动画库 -->
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <!-- 3D 渲染全局库：按原顺序加载，供 CSS3D 引擎（Vue 之外的模块）使用 -->
+    <script src="lib/three.min.js"></script>
+    <script src="lib/tween.min.js"></script>
+    <script src="lib/TrackballControls.js"></script>
+    <script src="lib/CSS3DRenderer.js"></script>
+
+    <link rel="stylesheet" href="assets/index-f8d7f5a6.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    
+      <script>
+async function bootLottery() {
+  if ('serviceWorker' in navigator) {
+    await navigator.serviceWorker.register('sw.js');
+    await navigator.serviceWorker.ready;
+    if (!navigator.serviceWorker.controller) {
+      await new Promise((resolve) => {
+        navigator.serviceWorker.addEventListener('controllerchange', resolve, { once: true });
+        setTimeout(resolve, 2000);
+      });
+    }
+  }
+  const s = document.createElement('script');
+  s.type = 'module';
+  s.src = 'assets/index-c8aa77ea.js';
+  document.body.appendChild(s);
+}
+bootLottery();
+</script>
+  </body>
+</html>
